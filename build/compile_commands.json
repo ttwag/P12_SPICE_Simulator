@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/Users/taowang/Desktop/project/p12_spice_simulator/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -I/Users/taowang/Desktop/project/p12_spice_simulator/include -std=gnu2x -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -o CMakeFiles/p12_spice_simulator.dir/src/main.c.o -c /Users/taowang/Desktop/project/p12_spice_simulator/src/main.c",
+  "file": "/Users/taowang/Desktop/project/p12_spice_simulator/src/main.c",
+  "output": "CMakeFiles/p12_spice_simulator.dir/src/main.c.o"
+}
+]

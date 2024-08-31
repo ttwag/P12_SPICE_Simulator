@@ -1,0 +1,3 @@
+/Users/taowang/Desktop/project/p12_spice_simulator/build/CMakeFiles/p12_spice_simulator.dir
+/Users/taowang/Desktop/project/p12_spice_simulator/build/CMakeFiles/edit_cache.dir
+/Users/taowang/Desktop/project/p12_spice_simulator/build/CMakeFiles/rebuild_cache.dir
