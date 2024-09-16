@@ -18,7 +18,7 @@ For a circuit with n nodes and m voltage sources and k independent current sourc
 
 MNA will reduce circuits that only have passive components and independent voltage or current sources into the form:
 
-$$\bold{Ax} = \bold{z}$$
+$$\\bold{Ax} = \\bold{z}$$
 
 For a circuit with n nodes and m voltage sources:
 
