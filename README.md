@@ -75,6 +75,7 @@ $$
       v\_n \\
       \end{bmatrix}
     $$
+
 * The $\mathbf{j}$ vector 
     * Each entry of the vector is the current flowing into the mth voltage source.
     * EX: 
@@ -87,6 +88,7 @@ $$
       \ i\_m \\
       \end{bmatrix}
     $$
+    
 ### $\mathbf{z}$ vector:
 * Size: $(n + m) \times 1$
 * Contains **2 vectors**: $\mathbf{i}$ and $\mathbf{e}$
