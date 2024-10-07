@@ -1,0 +1,152 @@
+% ADD REFERENCE TO THE SWARTHMORE COLLEGE
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{array}
+
+\begin{document}
+
+\title{Modified Nodal Analysis}
+\maketitle
+
+\section{Circuit Notation}
+
+For a circuit with \( n \) nodes, \( m \) voltage sources, and \( k \) independent current sources:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|r|c|}
+\hline
+\textbf{Circuit Component} & \textbf{Symbol} \\
+\hline
+Ground & 0 \\
+Node & 1 $\to$ n \\
+Nodal Voltage & \( v_1 \to v_n \) \\
+Independent Voltage Source & \( V_1 \to V_m \) \\
+Current through Independent Voltage Source & \( i_1 \to i_m \) \\
+Independent Current Source & \( I_1 \to I_k \) \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Modified Nodal Analysis (MNA)}
+
+MNA will reduce circuits that only have passive components and independent voltage or current sources into the form:
+
+\[
+\mathbf{Ax} = \mathbf{z}
+\]
+
+For a circuit with \( n \) nodes and \( m \) voltage sources:
+
+\subsection{The $\mathbf{A}$ Matrix}
+\begin{itemize}
+    \item \textbf{Size}: \( (n + m) \times (n + m) \)
+    \item Contains \textbf{4 sub-matrices}: the conductance matrix (\(\mathbf{G}\)), the voltage source matrices (\(\mathbf{B}\) and \(\mathbf{C}\)), and the dependent source matrix (\(\mathbf{D}\)).
+\end{itemize}
+
+\[
+\begin{bmatrix}
+\mathbf{G} &  \mathbf{B} \\
+\mathbf{C} & \mathbf{D} \\
+\end{bmatrix}
+\]
+
+\begin{itemize}
+    \item \textbf{The $\mathbf{G}$ Matrix}:
+    \begin{itemize}
+        \item \textbf{Size}: \( (n \times n) \)
+        \item Each diagonal term is equal to the sum of the conductance of elements connected to the corresponding node. \textit{Example}: The first diagonal term is the sum of conductances connected to node 1.
+        \item Each off-diagonal term is the negative conductance of the element connected to the pair of corresponding nodes. \textit{Example}: A resistor connected to nodes 2 and 3 will be placed in the \(\mathbf{G}\) matrix at positions (2, 3) and (3, 2).
+    \end{itemize}
+    \item \textbf{The $\mathbf{B}$ Matrix}:
+    \begin{itemize}
+        \item \textbf{Size}: \( (n \times m) \)
+        \item Contains only the values -1, 0, and 1.
+        \item If the \(n\)th node is connected to the \(m\)th voltage source's positive terminal, then the element at (n, m) is 1.
+        \item If the \(n\)th node is connected to the \(m\)th voltage source's negative terminal, then the element at (n, m) is -1.
+        \item Otherwise, the entry is 0.
+        % TODO: Need to address the $\mathbf{C}$ and $\mathbf{D}$ matrices for dependent sources
+    \end{itemize}
+    \item \textbf{The $\mathbf{C}$ Matrix}:
+    \begin{itemize}
+        \item \textbf{Size}: \( (m \times n) \)
+        \item Transpose of the \(\mathbf{B}\) matrix.
+    \end{itemize}
+    \item \textbf{The $\mathbf{D}$ Matrix}:
+    \begin{itemize}
+        \item \textbf{Size}: \( (m \times m) \)
+        \item Contains all 0s.
+    \end{itemize}
+\end{itemize}
+
+\subsection{The $\mathbf{x}$ Vector}
+\begin{itemize}
+    \item \textbf{Size}: \( (n + m) \times 1 \)
+    \item Contains \textbf{2 vectors}: \(\mathbf{v}\) and \(\mathbf{j}\)
+\end{itemize}
+
+\[
+\mathbf{x} = 
+\begin{bmatrix}
+\mathbf{v} \\
+\mathbf{j} \\
+\end{bmatrix}
+\]
+
+\begin{itemize}
+    \item \textbf{The $\mathbf{v}$ Vector}:
+    \begin{itemize}
+        \item Each entry of the vector is the node voltage of the \(n\)th node (no entry for ground, node 0).
+        \item \textit{Example}: 
+        \[
+        \mathbf{v} = 
+        \begin{bmatrix}
+        v_1 \\
+        \vdots \\
+        v_n \\
+        \end{bmatrix}
+        \]
+    \end{itemize}
+    \item \textbf{The $\mathbf{j}$ Vector}:
+    \begin{itemize}
+        \item Each entry of the vector is the current flowing into the \(m\)th voltage source.
+        \item \textit{Example}: 
+        \[
+        \mathbf{j} = 
+        \begin{bmatrix}
+        i_1 \\
+        \vdots \\
+        i_m \\
+        \end{bmatrix}
+        \]
+    \end{itemize}
+\end{itemize}
+
+\subsection{The $\mathbf{z}$ Vector}
+\begin{itemize}
+    \item \textbf{Size}: \( (n + m) \times 1 \)
+    \item Contains \textbf{2 vectors}: \(\mathbf{i}\) and \(\mathbf{e}\)
+\end{itemize}
+
+\[
+\mathbf{z} = 
+\begin{bmatrix}
+\mathbf{i} \\
+\mathbf{e} \\
+\end{bmatrix}
+\]
+
+\begin{itemize}
+    \item \textbf{The $\mathbf{i}$ Vector}:
+    \begin{itemize}
+        \item \textbf{Size}: \( (n \times 1) \)
+        \item The \(n\)th element is the sum of the current sources into the \(n\)th node (Node 0 isn't included). If no current source is connected to the \(n\)th node, then \((n, 1) = 0\).
+    \end{itemize}
+    \item \textbf{The $\mathbf{e}$ Vector}:
+    \begin{itemize}
+        \item \textbf{Size}: \( (m \times 1) \)
+        \item The \(m\)th entry contains the value of the \(m\)th voltage source.
+    \end{itemize}
+\end{itemize}
+
+\end{document}

@@ -22,83 +22,83 @@ $$\mathbf{Ax} = \mathbf{z}$$
 
 For a circuit with n nodes and m voltage sources:
 
-### $\bold{A}$ matrix
+### $\mathbf{A}$ matrix
 * Size: $(n + m) \times (n + m)$
-* Contains **4 sub-matrices**: the conductance matrix ($\bold{G}$), the voltage source matrices ($\bold{B}$ and $\bold{C}$), and the dependent source matrix ($\bold{D}$).
+* Contains **4 sub-matrices**: the conductance matrix ($\mathbf{G}$), the voltage source matrices ($\mathbf{B}$ and $\mathbf{C}$), and the dependent source matrix ($\mathbf{D}$).
 
 $$
 \begin{bmatrix}
-\bold{G} &  \bold{B}\\
-\bold{C} & \bold{D} \\
+\mathbf{G} &  \mathbf{B}\\
+\mathbf{C} & \mathbf{D} \\
 \end{bmatrix}
 $$
 
-* The $\bold{G}$ matrix:
+* The $\mathbf{G}$ matrix:
     * Size: $(n \times n)$
     * Each diagonal term is equal to the sum of the conductance of elements connected to the corresponding node. EX: The first diagonal term is the sum of conductances connected to node 1.
-    * Each off-diagonal term is the negative conductance of the element connected to the pair of corresponding nodes. EX: A resistor connected to nodes 2 and 3 will go into $\bold{G}$ matrix position (2, 3) and (3, 2).
-* The $\bold{B}$ matrix 
+    * Each off-diagonal term is the negative conductance of the element connected to the pair of corresponding nodes. EX: A resistor connected to nodes 2 and 3 will go into $\mathbf{G}$ matrix position (2, 3) and (3, 2).
+* The $\mathbf{B}$ matrix 
     * Size: $(n \times m)$
     * Contains only the value, -1, 0, 1.
     * If the nth node is connected to the mth voltage source's positive terminal, then the element at (n, m) is 1.
     * If the nth node is connected to the mth voltage source's negative terminal, then the element at (n, m) is -1.
     * Otherwise, the entry is 0.
     <!-- need to change the C and D matrix when considering dependent source -->
-* The $\bold{C}$ matrix
+* The $\mathbf{C}$ matrix
     * $(m \times n)$
-    * Transpose of the $\bold{B}$ matrix.
-* The $\bold{D}$ matrix
+    * Transpose of the $\mathbf{B}$ matrix.
+* The $\mathbf{D}$ matrix
     * $(m \times m)$
     * Contains all 0.
 
-### $\bold{x}$ vector
+### $\mathbf{x}$ vector
 * Size: $(n + m) \times 1$
-* Contains **2 vectors**: $\bold{v}$ and $\bold{j}$
+* Contains **2 vectors**: $\mathbf{v}$ and $\mathbf{j}$
 
 $$
-\bold{x} = 
+\mathbf{x} = 
 \begin{bmatrix}
-\bold{v} \\
-\bold{j} \\
+\mathbf{v} \\
+\mathbf{j} \\
 \end{bmatrix}
 $$
 
-* The $\bold{v}$ vector
+* The $\mathbf{v}$ vector
     * Each entry of the vector is the node voltage of the nth node (No entry for ground, node 0).
     * EX: $
-      \bold{v} = 
+      \mathbf{v} = 
       \begin{bmatrix}
       \ v\_1 \\
       \ \vdots\\
       \ v\_n \\
       \end{bmatrix}
       $
-* The $\bold{j}$ vector 
+* The $\mathbf{j}$ vector 
     * Each entry of the vector is the current flowing into the mth voltage source.
     * EX: $
-      \bold{j} = 
+      \mathbf{j} = 
       \begin{bmatrix}
       \ i\_1 \\
       \ \vdots\\
       \ i\_m \\
       \end{bmatrix}
       $
-### $\bold{z}$ vector:
+### $\mathbf{z}$ vector:
 * Size: $(n + m) \times 1$
-* Contains **2 vectors**: $\bold{i}$ and $\bold{e}$
+* Contains **2 vectors**: $\mathbf{i}$ and $\mathbf{e}$
 $$
-\bold{z} = 
+\mathbf{z} = 
 \begin{bmatrix}
-\bold{i} \\
-\bold{e} \\
+\mathbf{i} \\
+\mathbf{e} \\
 \end{bmatrix}
 $$
 
-* The $\bold{i}$ vector
+* The $\mathbf{i}$ vector
     * Size: $(n \times 1)$
     * The nth element is the sum of the current source into the nth node (Node 0 isn't included). If no current source is connected to the nth node, (n, 1) = 0.
 
- * The $\bold{e}$ vector
+ * The $\mathbf{e}$ vector
     * Size: $(m \times 1)$
     * The mth entry contains the value of the mth voltage source
 
