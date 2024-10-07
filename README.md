@@ -67,27 +67,27 @@ $$
     * Each entry of the vector is the node voltage of the nth node (No entry for ground, node 0).
     * EX: 
     
-    $$
-      \mathbf{v} = 
-      \begin{bmatrix}
-      v_1 \\
-      \vdots\\
-      v_n \\
-      \end{bmatrix}
-    $$
+$$
+\mathbf{v} = 
+\begin{bmatrix}
+v_1 \\
+\vdots\\
+v_n \\
+\end{bmatrix}
+$$
 
 * The $\mathbf{j}$ vector 
     * Each entry of the vector is the current flowing into the mth voltage source.
     * EX: 
     
-    $$
-      \mathbf{j} = 
-      \begin{bmatrix}
-      \ i_1 \\
-      \ \vdots\\
-      \ i_m \\
-      \end{bmatrix}
-    $$
+$$
+\mathbf{j} = 
+\begin{bmatrix}
+\ i_1 \\
+\ \vdots\\
+\ i_m \\
+\end{bmatrix}
+$$
 
 ### $\mathbf{z}$ vector:
 * Size: $(n + m) \times 1$
