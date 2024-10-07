@@ -70,9 +70,9 @@ $$
     $$
       \mathbf{v} = 
       \begin{bmatrix}
-      v\_1 \\
+      v_1 \\
       \vdots\\
-      v\_n \\
+      v_n \\
       \end{bmatrix}
     $$
 
@@ -83,12 +83,12 @@ $$
     $$
       \mathbf{j} = 
       \begin{bmatrix}
-      \ i\_1 \\
+      \ i_1 \\
       \ \vdots\\
-      \ i\_m \\
+      \ i_m \\
       \end{bmatrix}
     $$
-    
+
 ### $\mathbf{z}$ vector:
 * Size: $(n + m) \times 1$
 * Contains **2 vectors**: $\mathbf{i}$ and $\mathbf{e}$
