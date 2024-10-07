@@ -66,14 +66,14 @@ $$
 * The $\mathbf{v}$ vector
     * Each entry of the vector is the node voltage of the nth node (No entry for ground, node 0).
     * EX: 
-    \[
+    $
       \mathbf{v} = 
       \begin{bmatrix}
-      \ v\_1 \\
-      \ \vdots\\
-      \ v\_n \\
+      v\_1 \\
+      \vdots\\
+      v\_n \\
       \end{bmatrix}
-    \]
+    $
 * The $\mathbf{j}$ vector 
     * Each entry of the vector is the current flowing into the mth voltage source.
     * EX: $
