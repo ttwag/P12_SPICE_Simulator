@@ -1,6 +1,7 @@
 import numpy as np
 import numpy.typing as npt
 from typing import List
+import sys
 
 # note:
 # number of node and voltage source are provided at the beginning of the net list file
@@ -51,7 +52,7 @@ def fill_array(
                 A_matrix[node_A][node_B] -= conductance
                 A_matrix[node_B][node_A] -= conductance
         case _:
-            print("Error")
+            sys.exit("Error: Invalid netlist format detected.")
 
 
 with open("netlist.txt", "r") as file:
