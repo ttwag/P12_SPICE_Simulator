@@ -11,7 +11,7 @@ import sys
 # n = row, m = col
 
 
-def fill_array(
+def fill_A_matrix_and_z_vector(
     A_matrix: npt.NDArray[np.float64],
     z_vector: npt.NDArray[np.float64],
     line: List[str],
@@ -55,19 +55,26 @@ def fill_array(
             sys.exit("Error: Invalid netlist format detected.")
 
 
-with open("netlist.txt", "r") as file:
-    lines = file.readlines()
-    n = int(lines[0][5])
-    m = int(lines[1][7])
+def parse_netlist(
+    netlist: str,
+) -> tuple[npt.NDArray[np.float64], npt.NDArray[np.float64]]:
+    with open(netlist, "r") as file:
+        lines = file.readlines()
+        n = int(lines[0][5])
+        m = int(lines[1][7])
 
-    A_matrix = np.zeros(shape=(n + m, n + m), dtype=float)
-    z_vector = np.zeros(shape=(n + m, 1))
+        A_matrix = np.zeros(shape=(n + m, n + m), dtype=float)
+        z_vector = np.zeros(shape=(n + m, 1))
 
-    for line_num in range(3, len(lines)):
-        processed_line = lines[line_num].split()
-        print(processed_line)
-        fill_array(A_matrix, z_vector, processed_line, n, m)
-    print(A_matrix)
-    print(z_vector)
+        for line_num in range(3, len(lines)):
+            processed_line = lines[line_num].split()
+            fill_A_matrix_and_z_vector(A_matrix, z_vector, processed_line, n, m)
 
-    print(np.linalg.solve(A_matrix, z_vector))
+        return (A_matrix, z_vector)
+
+
+A_matrix, z_vector = parse_netlist("netlist.txt")
+x_vector = np.linalg.solve(A_matrix, z_vector)
+print(f"A Matrix:\n{A_matrix}\n")
+print(f"z Vector:\n{z_vector}\n")
+print(f"x Vector:\n{x_vector}\n")
