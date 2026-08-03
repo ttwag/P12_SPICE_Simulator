@@ -1,4 +1,6 @@
 import numpy as np
+import numpy.typing as npt
+from typing import List
 
 # note:
 # number of node and voltage source are provided at the beginning of the net list file
@@ -8,7 +10,13 @@ import numpy as np
 # n = row, m = col
 
 
-def fill_array(A_matrix, z_vector, line, n, m):
+def fill_array(
+    A_matrix: npt.NDArray[np.float64],
+    z_vector: npt.NDArray[np.float64],
+    line: List[str],
+    n: int,
+    m: int,
+):
     component = line[0][0]
     component_num = int(line[0][1:]) - 1
     node_A = int(line[1]) - 1  # correct index
