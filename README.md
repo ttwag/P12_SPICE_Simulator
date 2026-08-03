@@ -20,7 +20,7 @@ For a non-reactive circuit like
                                  -
 ```
 
-the newlist would be:
+the netlist would be:
 
 ```text
 NODE 3
