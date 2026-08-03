@@ -1,0 +1,19 @@
+{
+  "name": "Python Circuit Solver",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.11-bullseye",
+  
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.analysis.typeCheckingMode": "strict"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+      ]
+    }
+  },
+
+  "postCreateCommand": "pip install numpy"
+}
