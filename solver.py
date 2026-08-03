@@ -73,8 +73,21 @@ def parse_netlist(
         return (A_matrix, z_vector)
 
 
-A_matrix, z_vector = parse_netlist("netlist.txt")
-x_vector = np.linalg.solve(A_matrix, z_vector)
-print(f"A Matrix:\n{A_matrix}\n")
-print(f"z Vector:\n{z_vector}\n")
-print(f"x Vector:\n{x_vector}\n")
+if __name__ == "__main__":
+    # 1. Check if the user actually provided a filename
+    if len(sys.argv) < 2:
+        sys.exit(
+            "Error: No netlist file provided.\nUsage: python solver.py <filename.txt>"
+        )
+
+    # 2. Grab the first argument
+    net_list_file = sys.argv[1]
+
+    # 3. Parse the netlist and solve for the x vector
+    A_matrix, z_vector = parse_netlist(net_list_file)
+    x_vector = np.linalg.solve(A_matrix, z_vector)
+
+    # 4. Print the matrices
+    print(f"A Matrix:\n{A_matrix}\n")
+    print(f"z Vector:\n{z_vector}\n")
+    print(f"x Vector:\n{x_vector}\n")

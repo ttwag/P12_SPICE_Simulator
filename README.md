@@ -34,10 +34,10 @@ R3 3 0 2
 I1 2 1 1   # positive terminal at node 2, negative terminal at node 1, and is 1A
 ```
 
-and feeding the netlist to our solver.py (hardcoded netlist path for simplicity) yields
+and feeding the netlist to our solver.py yields
 
 ```
-$ python solver.py
+$ python solver.py netlist.txt
 ... some other output
 
 x Vector:
