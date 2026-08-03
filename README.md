@@ -1,6 +1,65 @@
 # P12_Circuit_Simulator
  A SPICE-like circuit simulator.
 
+For a non-reactive circuit like
+```text
+                I1 (1A)
+          ------( -> )------
+          |                |
+ Node 1   |    R1 (1Ω)     |   Node 2       V2 (6V)       Node 3
+   o----------/\/\/\/\/\---------o---------(-   +)----------o
+   |                             |                          |
+  (+)                            |                          |
+  ( ) V1                        _|_ R2                     _|_ R3
+  (-) (4V)                      \_/ (4Ω)                   \_/ (2Ω)
+   |                             |                          |
+   |                             |                          |
+   +-----------------------------+--------------------------+
+                                 |
+                                ===  GND (Node 0)
+                                 -
+```
+
+the newlist would be:
+
+```text
+NODE 3
+SOURCE 2
+
+V1 1 0 4   # positive terminal at node 1, negative terminal at node 0, and is 4V
+V2 3 2 6   
+R1 1 2 1   # positive terminal at node 1, negative terminal at node 2, and is 1Ω
+R2 2 0 4
+R3 3 0 2
+I1 2 1 1   # positive terminal at node 2, negative terminal at node 1, and is 1A
+```
+
+and feeding the netlist to our solver.py (hardcoded netlist path for simplicity) yields
+
+```
+$ python solver.py
+... some other output
+
+x Vector:
+[[ 4.        ]
+ [ 1.14285714]
+ [ 7.14285714]
+ [-3.85714286]
+ [-3.57142857]]
+```
+
+Therefore, 
+
+$v_1$ = 4V: node 1 voltage is 4V
+
+$v_2 \approx$ 1.14V: node 2 voltage is 8/7 V
+
+$v_3 \approx$ 7.14V: node 3 voltage is 50/7 V
+
+$i_{V1} \approx$ -3.86A: current flows from positive to negative terminal of V1 and is 27/7 A
+
+$i_{V2} \approx$ -3.57A: current flows from positive to negative terminal of V2 and is 25/7 A
+
 ## Circuit Notation
 
 For a circuit with n nodes and m voltage sources and k independent current source:
